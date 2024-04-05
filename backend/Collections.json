@@ -1,0 +1,32 @@
+[
+    {
+        "CollectionID": "1",
+        "Title": "",
+        "AvatarIRL": "",
+        "MediaType": "",
+        "SubjectTag": "",
+        "Description": "",
+        "OriginalUrl": "",
+        "VoteNum": ""
+    },
+    {
+        "CollectionID": 2,
+        "Title": "",
+        "AvatarIRL": "",
+        "MediaType": "",
+        "SubjectTag": "",
+        "Description": "",
+        "OriginalUrl": "",
+        "VoteNum": ""
+    },
+    {
+        "CollectionID": 3,
+        "Title": "",
+        "AvatarIRL": "",
+        "MediaType": "",
+        "SubjectTag": "",
+        "Description": "",
+        "OriginalUrl": "",
+        "VoteNum": ""
+    }
+]
