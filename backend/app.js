@@ -1,6 +1,6 @@
-const fs = require('fs');
 const mysql = require("mysql");
 const express = require('express');
+
 const app = express();
 const hostname = '127.0.0.1'; // Your server ip address
 const port = 3000;
@@ -10,29 +10,12 @@ app.get('/', (req, res) => {
     res.send(`Server is up!`);
 })
 
-// Get Collection Data
-app.get('/collections', (req, res)=> {
-    // read file
-    fs.readFile('./Collections.json', 'utf-8', (err, data)=> {
-        if (err) {
-            return res.status(500).send("Sorry, something went wrong!");
-        }
-        const collections = JSON.parse(data);
-        return res.json({collections: collections})
-    })
-})
+// Include routes file
+const collectionsRoute = require('./routes/collections');
+app.use('/collections', collectionsRoute);
+const profilesRoute = require('./routes/profiles');
+app.use('/profiles', profilesRoute);
 
-app.get('/collections/:id', (req, res) => {
-    const id = parseInt(req.params.id, 10)-1;
-    fs.readFile('./Collections.json', 'utf-8', (err, data)=> {
-        if (err) {
-            return res.status(500).send("Sorry, something went wrong!");
-        }
-        const collections = JSON.parse(data);
-        return res.json({collections: collections[id]})
-    })
-        
-    })
 
     /*
 // Connect MYSQL
