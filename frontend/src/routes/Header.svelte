@@ -8,7 +8,7 @@
 	];
 </script>
 
-<header>
+<header class="sticky top-0 z-50">
 	<div class="bg-black h-10" />
 	<nav class="bg-gray-200 p-4 flex items-center justify-between">
 		<!-- Logo -->
