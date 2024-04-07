@@ -1,4 +1,5 @@
 <script>
+	import icon from '$lib/images/icon.svg';
 	import Header from './Header.svelte';
 	import './styles.css';
 	import '../app.css';
@@ -11,8 +12,8 @@
 		<slot />
 	</main>
 
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	<footer class="bg-gray-200 h-32">
+		<img src={icon} alt="Davincin" class="w-auto ml-auto mr-20 mb-2" />
 	</footer>
 </div>
 
