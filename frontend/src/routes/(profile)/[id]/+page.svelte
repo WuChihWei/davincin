@@ -1,6 +1,5 @@
 <script>
-  import ItemInput from './ItemInput.svelte';
-
+	import ItemInput from './ItemInput.svelte';
 	import ListItem from './ListItem.svelte';
 	import image from '$lib/images/davinci_1.png';
 	import Icon from '@iconify/svelte';
