@@ -1,15 +1,30 @@
 <script>
+  import ItemInput from './ItemInput.svelte';
+
+	import ListItem from './ListItem.svelte';
 	import image from '$lib/images/davinci_1.png';
 	import Icon from '@iconify/svelte';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
 
 	let activeTab = 0;
-	const tabs = [
-		{ title: 'Media', content: 'Content of Tab 1' },
-		{ title: 'Tab 2', content: 'Content of Tab 2' },
-		{ title: 'Tab 3', content: 'Content of Tab 3' }
-	];
+	const tabs = [{ title: 'Media' }, { title: 'Tab 2' }, { title: 'Tab 3' }];
+	let collection = {
+		books: [
+			{ title: 'Book 1', vote_count: 12 },
+			{ title: 'Book 2', vote_count: 32 },
+			{ title: 'Book 3', vote_count: 20 }
+		],
+		podcasts: [
+			{ title: 'Podcast 1', vote_count: 12 },
+			{ title: 'Podcast 2', vote_count: 32 },
+			{ title: 'Podcast 3', vote_count: 20 }
+		],
+		videos: [
+			{ title: 'Video 1', vote_count: 12 },
+			{ title: 'Video 2', vote_count: 32 },
+			{ title: 'Video 3', vote_count: 20 }
+		]
+	};
 </script>
 
 <svelte:head>
@@ -18,7 +33,7 @@
 </svelte:head>
 
 <div class="text-column">
-	<div class="flex flex-row">
+	<div class="mt-10 flex flex-row">
 		<img class="rounded-full h-36" src={image} alt="" />
 		<div class="flex flex-col w-full ml-16">
 			<h3 class="text-4xl font-bold">{$page.params.id}</h3>
@@ -49,11 +64,40 @@
 	</div>
 
 	<div class="tab-content overflow-hidden">
-		{#each tabs as tab, index}
+		<!-- {#each tabs as tab, index}
 			<div class={index === activeTab ? 'block' : 'hidden'}>
 				{tab.content}
 			</div>
-		{/each}
+		{/each} -->
+		<div class="my-10">
+			<h4 class="mb-4 text-2xl font-bold">📖 Books</h4>
+			<div class="px-1 rounded-md shadow-sm">
+				{#each collection.books as book}
+					<ListItem {...book}></ListItem>
+				{/each}
+				<ItemInput></ItemInput>
+			</div>
+		</div>
+
+		<div class="my-10">
+			<h4 class="mb-4 text-2xl font-bold">📻 Podcasts</h4>
+			<div class="px-1 rounded-md shadow-sm">
+				{#each collection.podcasts as podcast}
+					<ListItem {...podcast}></ListItem>
+				{/each}
+				<ItemInput></ItemInput>
+			</div>
+		</div>
+
+		<div class="my-10">
+			<h4 class="mb-4 text-2xl font-bold">📹 Videos</h4>
+			<div class="px-1 rounded-md shadow-sm">
+				{#each collection.videos as video}
+					<ListItem {...video}></ListItem>
+				{/each}
+				<ItemInput></ItemInput>
+			</div>
+		</div>
 	</div>
 </div>
 
