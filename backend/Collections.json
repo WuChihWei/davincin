@@ -1,32 +1,32 @@
 [
     {
         "CollectionID": "1",
-        "Title": "",
-        "AvatarIRL": "",
-        "MediaType": "",
-        "SubjectTag": "",
-        "Description": "",
-        "OriginalUrl": "",
-        "VoteNum": ""
+        "Title": "Don't Make Me Think, Revisited: A Common Sense Approach to Web Usability",
+        "AvatarURL": "https://www.davincin.com/book/dont-make-me-think",
+        "MediaType": "book",
+        "SubjectTag": "technology",
+        "Description": "Steve Krug’s guide to common sense web usability in Don’t Make Me Think is one of the most recommended books for coders just starting out in the field. Originally published in 2000, the revised version of the book includes updated material on the foundational principles of intuitive navigation and information design.",
+        "OriginalUrl": "https://www.books.com.tw",
+        "VoteNum": "70"
     },
     {
         "CollectionID": 2,
-        "Title": "",
-        "AvatarIRL": "",
-        "MediaType": "",
-        "SubjectTag": "",
-        "Description": "",
-        "OriginalUrl": "",
-        "VoteNum": ""
+        "Title": "Top Gun 2",
+        "AvatarURL": "https://www.davincin.com/video/topgun2",
+        "MediaType": "video",
+        "SubjectTag": "life",
+        "Description": "After thirty years, Maverick is still pushing the envelope as a top naval aviator, but must confront ghosts of his past when he leads TOP GUN's elite graduates on a mission that demands the ultimate sacrifice from those chosen to fly it.",
+        "OriginalUrl": "https://video.com.tw/maverick",
+        "VoteNum": "22"
     },
     {
         "CollectionID": 3,
-        "Title": "",
-        "AvatarIRL": "",
-        "MediaType": "",
-        "SubjectTag": "",
-        "Description": "",
-        "OriginalUrl": "",
-        "VoteNum": ""
+        "Title": "Daily Coding Routine",
+        "AvatarURL": "https://www.davincin.com/podcast/daily-coding-routine",
+        "MediaType": "podcast",
+        "SubjectTag": "technology",
+        "Description": "This podcast is produced by CodeNewbie, an organization that provides support infrastructures, including forums, blogs, and a social networking platform, for people new to coding.",
+        "OriginalUrl": "https://www.podcast.com.tw/coding",
+        "VoteNum": "15"
     }
 ]
