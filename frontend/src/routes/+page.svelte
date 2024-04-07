@@ -50,7 +50,7 @@
 
 <svelte:head>
 	<title>Davincin</title>
-	<meta name="description" content="da Vinci to nth power" />
+	<meta name="description" content="Davincin Education App" />
 </svelte:head>
 
 <section>
