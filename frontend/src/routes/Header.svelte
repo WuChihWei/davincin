@@ -4,7 +4,7 @@
 	let pages = [
 		{ text: 'How It Works', url: '/about' },
 		{ text: 'Learning Models', url: '/sverdle' },
-		{ text: 'My Profile', url: '#' }
+		{ text: 'My Profile', url: '/davinci' }
 	];
 </script>
 

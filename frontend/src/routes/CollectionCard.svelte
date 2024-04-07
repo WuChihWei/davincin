@@ -28,24 +28,24 @@
 			</a>
 		</h3>
 	</div>
-	<div class="flex justify-between">
+	<div class="flex justify-between mt-1">
 		<div class="flex items-center">
 			<Icon icon="ri:book-fill" style="font-size: 18px;" />
-			<p class="ml-1 mt-1 text-sm text-gray-900">Books</p>
+			<p class="ml-1 text-sm text-gray-900">Books</p>
 		</div>
 		<p class="text-sm font-medium text-gray-500">{collection.n_books}</p>
 	</div>
-	<div class="flex justify-between">
+	<div class="flex justify-between mt-1">
 		<div class="flex items-center">
 			<Icon icon="lets-icons:video-fill" style="font-size: 18px;" />
-			<p class="ml-1 mt-1 text-sm text-gray-900">Podcasts</p>
+			<p class="ml-1 text-sm text-gray-900">Podcasts</p>
 		</div>
 		<p class="text-sm font-medium text-gray-500">{collection.n_podcasts}</p>
 	</div>
-	<div class="flex justify-between">
+	<div class="flex justify-between mt-1">
 		<div class="flex items-center">
 			<Icon icon="mdi:podcast" style="font-size: 18px;" />
-			<p class="ml-1 mt-1 text-sm text-gray-900">Videos</p>
+			<p class="ml-1 text-sm text-gray-900">Videos</p>
 		</div>
 		<p class="text-sm font-medium text-gray-500">{collection.n_videos}</p>
 	</div>
