@@ -12,7 +12,7 @@
 		<slot />
 	</main>
 
-	<footer class="bg-gray-200 h-32">
+	<footer class="bg-gray-100 h-32">
 		<img src={icon} alt="Davincin" class="w-auto ml-auto mr-20 mb-2" />
 	</footer>
 </div>
