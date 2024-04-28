@@ -1,7 +1,8 @@
 <script>
+	import image from '$lib/images/davinci_1.png';
 	import Icon from '@iconify/svelte';
 	/**
-	 * @type {{ profile: { avatarURL: string; name: string; }; counts: { books: number; podcasts: number; videos: number; }; }}
+	 * @type {{ profile: { avatarUrl: string; name: string; }; counts: { books: number; podcasts: number; videos: number; }; }}
 	 */
 	export let collection;
 </script>
@@ -11,7 +12,10 @@
 		class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75"
 	>
 		<div class="relative">
-			<img src={collection.profile.avatarURL} class="h-full w-full object-cover object-center" />
+			<img
+				src={collection.profile.avatarUrl || image}
+				class="h-full w-full object-cover object-center"
+			/>
 			<span
 				class="absolute top-3 right-3 inline-flex items-center rounded-full bg-white px-3 py-1 text-md font-bold text-red-400"
 			>

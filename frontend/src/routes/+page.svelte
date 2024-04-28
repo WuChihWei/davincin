@@ -1,6 +1,6 @@
 <script>
 	import CollectionCard from './CollectionCard.svelte';
-	import { collections } from '../stores/collection.js';
+	import { collections } from '$lib/stores/collection.js';
 </script>
 
 <svelte:head>

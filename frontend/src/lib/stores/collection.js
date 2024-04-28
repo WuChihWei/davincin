@@ -6,7 +6,6 @@ export const collections = readable([], function start(set) {
 	onMount(async () => {
 		const response = await fetch('/api/collections');
 		const data = await response.json();
-		// @ts-ignore
 		set(data);
 	});
 
