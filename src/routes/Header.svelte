@@ -7,7 +7,7 @@
 	let pages = [
 		{ text: 'How It Works', url: '/about' },
 		{ text: 'Learning Models', url: '/sverdle' },
-		{ text: 'My Profile', url: $page.data.session?.user?.name || 'auth/signin' }
+		{ text: 'My Profile', url: '/davinci' }
 	];
 </script>
 
