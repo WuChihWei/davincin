@@ -4,6 +4,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"postinstall": "prisma generate",
+		"db:push": "prisma db push",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",

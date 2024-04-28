@@ -1,14 +1,15 @@
-# davincin
+# DAVINCIn
 
-davincin education app
+DAVINCIn Education App
 
-## Setting up
+Check out the demo app here: [`https://davincin.vercel.app`](https://davincin.vercel.app)
 
-Once you pull the project, install dependencies with `pnpm install`
+## Installation
+
+Once you pull the project, install dependencies with `pnpm install` and run `pnpm postinstall` to generate Prisma Client
 
 Create `.env` file and configure environment variables as in `.env.example`
 
-Whenever you update your Prisma schema, you will need to run the `pnpm dlx prisma db push` command to create new indexes and regenerate Prisma Client.
 
 ## Developing
 
@@ -17,6 +18,9 @@ start a development server:
 ```bash
 pnpm run dev
 ```
+
+### Updating Prisma schema
+Whenever you update your Prisma schema, you will need to run the `pnpm db:push` command to create new indexes and regenerate Prisma Client.
 
 ## Building
 
