@@ -1,13 +1,15 @@
 <script>
 	import image from '$lib/images/davinci_1.png';
 	import Icon from '@iconify/svelte';
+	import { goto } from '$app/navigation';
+
 	/**
-	 * @type {{ profile: { avatarUrl: string; name: string; }; counts: { books: number; podcasts: number; videos: number; }; }}
+	 * @type {{ profile: { username: string; avatarUrl: string; name: string; }; counts: { books: number; podcasts: number; videos: number; }; }}
 	 */
 	export let collection;
 </script>
 
-<div class="group relative">
+<div class="group relative" on:click={() => goto(collection.profile.username)}>
 	<div
 		class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75"
 	>
@@ -26,7 +28,7 @@
 	</div>
 	<div class="mt-4">
 		<h3 class="text-lg font-bold text-black">
-			<a href="#">
+			<a href={'/' + collection.profile.username}>
 				<span aria-hidden="true" class="absolute inset-0"></span>
 				{collection.profile.name}
 			</a>

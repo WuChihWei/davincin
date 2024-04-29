@@ -1,5 +1,8 @@
 <script>
+	import { goto } from '$app/navigation';
 	import logo from '$lib/images/logo.svg';
+	import { signIn, signOut } from '@auth/sveltekit/client';
+	import { page } from '$app/stores';
 
 	let pages = [
 		{ text: 'How It Works', url: '/about' },
@@ -29,10 +32,28 @@
 		</div>
 
 		<!-- Buttons -->
-		<div class="flex items-center space-x-4 ml-10 font-semibold">
-			<button class="text-blue-600 px-4 py-2 hover:text-blue-500">Login</button>
-			<button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-500">Sign Up</button>
-		</div>
+		{#if $page.data.session}
+			<div class="flex items-center space-x-4 ml-10">
+				<span>
+					<small>Signed in as</small><br />
+					<strong>{$page.data.session.user?.name ?? 'User'}</strong>
+				</span>
+				<button
+					on:click={() => signOut()}
+					class="text-blue-600 px-4 py-2 hover:text-blue-500 font-semibold">Sign out</button
+				>
+			</div>
+		{:else}
+			<div class="flex items-center space-x-4 ml-10 font-semibold">
+				<button on:click={() => signIn()} class="text-blue-600 px-4 py-2 hover:text-blue-500"
+					>Login</button
+				>
+				<button
+					on:click={() => signIn()}
+					class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-500">Sign Up</button
+				>
+			</div>
+		{/if}
 	</nav>
 </header>
 
