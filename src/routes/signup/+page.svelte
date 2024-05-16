@@ -22,7 +22,7 @@
 	<div class="flex items-center justify-center w-2/5">
 		<div class="w-72">
 			<h2 class="text-2xl font-semibold text-black">Hello!</h2>
-			<h3 class="text-lg font-semibold text-black">Get Started </h3>
+			<h3 class="text-lg font-semibold text-black">Get Started</h3>
 			<div class="py-6 space-y-6">
 				<div class="space-y-4">
 					<button
