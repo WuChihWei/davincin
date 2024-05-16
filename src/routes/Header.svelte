@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 
 	let pages = [
-		{ text: 'How It Works', url: '/about' },
+		{ text: 'How It Works', url: '/how-it-works' },
 		{ text: 'Learning Models', url: '/sverdle' },
 		{ text: 'My Profile', url: '/davinci' }
 	];
