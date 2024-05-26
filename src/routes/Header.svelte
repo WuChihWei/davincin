@@ -1,11 +1,10 @@
 <script>
-	import { goto } from '$app/navigation';
 	import logo from '$lib/images/logo.svg';
-	import { signIn, signOut } from '@auth/sveltekit/client';
+	import { signOut } from '@auth/sveltekit/client';
 	import { page } from '$app/stores';
 
 	let pages = [
-		{ text: 'How It Works', url: '/about' },
+		{ text: 'How It Works', url: '/how-it-works' },
 		{ text: 'Learning Models', url: '/sverdle' },
 		{ text: 'My Profile', url: '/davinci' }
 	];
@@ -27,7 +26,7 @@
 		<!-- Pages -->
 		<div class="flex items-center space-x-12 ml-auto font-semibold">
 			{#each pages as page}
-				<a href={page.url} class="text-black hover:text-gray-300">{page.text}</a>
+				<a href={page.url} class="text-black hover:text-gray-300 hover:no-underline">{page.text}</a>
 			{/each}
 		</div>
 
@@ -45,13 +44,14 @@
 			</div>
 		{:else}
 			<div class="flex items-center space-x-4 ml-10 font-semibold">
-				<button on:click={() => signIn()} class="text-blue-600 px-4 py-2 hover:text-blue-500"
-					>Login</button
-				>
-				<button
-					on:click={() => signIn()}
-					class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-500">Sign Up</button
-				>
+				<a href="/login">
+					<button class="text-blue-600 px-4 py-2 hover:text-blue-500">Login</button>
+				</a>
+				<a href="/signup">
+					<button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-500"
+						>Sign Up</button
+					>
+				</a>
 			</div>
 		{/if}
 	</nav>

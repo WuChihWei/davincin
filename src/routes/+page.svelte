@@ -9,10 +9,14 @@
 </svelte:head>
 
 <section>
-	<h1 class="mt-10 text-6xl text-blue-600 font-bold leading-tight">
-		Found out what knowledge would historical figures seek today?
-	</h1>
-	<h2 class="text-4xl text-black font-bold mt-6">Vote or build their learning profiles</h2>
+	<div class="max-w-7xl">
+		<h1 class="mt-10 text-6xl text-blue-600 font-bold leading-tight">
+			Found out what knowledge would historical figures seek today?
+		</h1>
+		<h2 class="text-4xl text-black font-bold mt-6 text-center">
+			Vote or build their learning profiles
+		</h2>
+	</div>
 </section>
 
 <section>
