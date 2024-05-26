@@ -1,6 +1,6 @@
 <script>
 	import logo from '$lib/images/logo.svg';
-	import { signIn, signOut } from '@auth/sveltekit/client';
+	import { signOut } from '@auth/sveltekit/client';
 	import { page } from '$app/stores';
 
 	let pages = [

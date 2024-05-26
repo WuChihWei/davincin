@@ -34,6 +34,9 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
 		Google,
 		Facebook
 	],
+	pages: {
+		signIn: '/login'
+	},
 	trustHost: true,
 	secret: AUTH_SECRET
 });
