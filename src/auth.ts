@@ -6,12 +6,13 @@ import { AUTH_SECRET } from '$env/static/private';
 import Credentials from '@auth/sveltekit/providers/credentials';
 import Facebook from '@auth/sveltekit/providers/facebook';
 import type { DefaultSession } from '@auth/sveltekit';
+import type { Profile, User } from '@prisma/client';
 
-declare module "@auth/sveltekit" {
+declare module '@auth/sveltekit' {
 	interface Session {
-	  user: {
-		username: string
-	  } & DefaultSession["user"]
+		user: User & {
+			profiles: Array<Profile>;
+		} & DefaultSession['user'];
 	}
 }
 
