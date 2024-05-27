@@ -4,6 +4,9 @@ import prisma from '$lib/prisma';
 // GET /api/collections
 export async function GET() {
 	const _collections = await prisma.collection.findMany({
+		where: {
+			profile: { isPublic: true }
+		},
 		include: {
 			profile: true
 		}
