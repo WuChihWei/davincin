@@ -7,7 +7,7 @@
 
 	let activeTab = 0;
 	const tabs = [{ title: 'Media' }, { title: 'Tab 2' }, { title: 'Tab 3' }];
-	
+
 	/** @type {import('./$types').PageData} */
 	export let data;
 </script>
