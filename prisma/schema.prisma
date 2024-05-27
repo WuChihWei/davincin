@@ -29,10 +29,11 @@ model Profile {
   username   String      @unique
   user       User        @relation(fields: [userId], references: [id])
   userId     String      @db.ObjectId
-  bio        String?
+  bio        String?     @default("")
   avatarUrl  String?
   gender     Gender      @default(UNDEFINED)
   collection Collection?
+  isPublic   Boolean     @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -40,7 +41,7 @@ model Profile {
 
 model User {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  username      String    @unique @default(uuid())
+  username      String    @unique @default(cuid())
   profiles      Profile[]
   role          Role      @default(USER)
   name          String?
