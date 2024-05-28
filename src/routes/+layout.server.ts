@@ -1,6 +1,26 @@
 /** @type {import('./$types').LayoutServerLoad} */
-export async function load(event) {
-	const session = await event.locals.auth();
+export async function load({ locals, fetch }) {
+	const session = await locals.auth();
+	if (session) {
+		let response = await fetch(`/api/users?email=${session?.user?.email}`);
+		session.user = await response.json();
+		const data = {
+			name: session.user.name,
+			username: session.user.username,
+			userId: session.user.id
+		};
+		if (!session.user.profiles.length) {
+			response = await fetch('api/profiles', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			});
+			const profile = await response.json();
+			session.user.profiles.push(profile);
+		}
+	}
 
 	return {
 		session

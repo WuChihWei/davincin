@@ -5,8 +5,7 @@
 
 	let pages = [
 		{ text: 'How It Works', url: '/how-it-works' },
-		{ text: 'Learning Models', url: '/sverdle' },
-		{ text: 'My Profile', url: '/davinci' }
+		{ text: 'Learning Models', url: '/sverdle' }
 	];
 </script>
 
@@ -28,6 +27,12 @@
 			{#each pages as page}
 				<a href={page.url} class="text-black hover:text-gray-300 hover:no-underline">{page.text}</a>
 			{/each}
+			{#if $page.data.session}
+				<a
+					href={$page.data.session.user.username}
+					class="text-black hover:text-gray-300 hover:no-underline">My Profile</a
+				>
+			{/if}
 		</div>
 
 		<!-- Buttons -->

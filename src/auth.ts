@@ -5,6 +5,16 @@ import Google from '@auth/sveltekit/providers/google';
 import { AUTH_SECRET } from '$env/static/private';
 import Credentials from '@auth/sveltekit/providers/credentials';
 import Facebook from '@auth/sveltekit/providers/facebook';
+import type { DefaultSession } from '@auth/sveltekit';
+import type { Profile, User } from '@prisma/client';
+
+declare module '@auth/sveltekit' {
+	interface Session {
+		user: User & {
+			profiles: Array<Profile>;
+		} & DefaultSession['user'];
+	}
+}
 
 export const { handle, signIn, signOut } = SvelteKitAuth({
 	adapter: PrismaAdapter(prisma),

@@ -14,16 +14,7 @@ export async function POST({ request }) {
 					{
 						name: username,
 						username,
-						avatarUrl: image,
-						collection: {
-							create: {
-								media: {
-									books: [],
-									podcasts: [],
-									videos: []
-								}
-							}
-						}
+						avatarUrl: image
 					}
 				]
 			}
