@@ -1,5 +1,4 @@
 import { json } from '@sveltejs/kit';
-import image from '$lib/images/davinci_1.png';
 import prisma from '$lib/prisma';
 import { MediaType } from '@prisma/client/edge';
 import { groupBy } from 'lodash-es';
@@ -14,7 +13,6 @@ export async function POST({ request }) {
 			userId,
 			bio,
 			gender,
-			avatarUrl: image
 		}
 	});
 
