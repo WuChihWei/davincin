@@ -13,14 +13,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Collection {
-  id        String  @id @default(auto()) @map("_id") @db.ObjectId
-  profile   Profile @relation(fields: [profileId], references: [id])
-  profileId String  @unique @db.ObjectId
-  media     Media
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model MediaItem {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  profile      Profile    @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId    String     @db.ObjectId
+  title        String
+  mediaType    MediaType
+  subjectTag   String?
+  description  String?
+  originalUrl  String
+  thumbnailUrl String?
+  voteCount    Int        @default(0)
 }
 
 model Profile {
@@ -32,7 +35,7 @@ model Profile {
   bio        String?     @default("")
   avatarUrl  String?
   gender     Gender      @default(UNDEFINED)
-  collection Collection?
+  collection MediaItem[]
   isPublic   Boolean     @default(false)
 
   createdAt DateTime @default(now())
@@ -47,7 +50,7 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime?
-  image         String
+  image         String?
   accounts      Account[]
   sessions      Session[]
 
@@ -112,20 +115,4 @@ enum MediaType {
   BOOK
   PODCAST
   VIDEO
-}
-
-type Media {
-  books    MediaItem[]
-  podcasts MediaItem[]
-  videos   MediaItem[]
-}
-
-type MediaItem {
-  title        String
-  mediaType    MediaType
-  subjectTag   String?
-  description  String?
-  originalUrl  String
-  thumbnailUrl String?
-  voteCount    Int       @default(0)
 }

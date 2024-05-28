@@ -57,7 +57,7 @@
 			<div class="my-10">
 				<h4 class="mb-4 text-2xl font-bold">📖 Books</h4>
 				<div class="px-1 rounded-md shadow-sm">
-					{#each data.profile.collection.media.books as book}
+					{#each data.profile.collection.books as book}
 						<ListItem title={book.title} voteCount={book.voteCount} url={book.originalUrl}
 						></ListItem>
 					{/each}
@@ -68,7 +68,7 @@
 			<div class="my-10">
 				<h4 class="mb-4 text-2xl font-bold">📻 Podcasts</h4>
 				<div class="px-1 rounded-md shadow-sm">
-					{#each data.profile.collection.media.podcasts as podcast}
+					{#each data.profile.collection.podcasts as podcast}
 						<ListItem title={podcast.title} voteCount={podcast.voteCount} url={podcast.originalUrl}
 						></ListItem>
 					{/each}
@@ -79,7 +79,7 @@
 			<div class="my-10">
 				<h4 class="mb-4 text-2xl font-bold">📹 Videos</h4>
 				<div class="px-1 rounded-md shadow-sm">
-					{#each data.profile.collection.media.videos as video}
+					{#each data.profile.collection.videos as video}
 						<ListItem title={video.title} voteCount={video.voteCount} url={video.originalUrl}
 						></ListItem>
 					{/each}

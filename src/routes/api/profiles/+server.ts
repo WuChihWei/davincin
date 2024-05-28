@@ -1,6 +1,8 @@
 import { json } from '@sveltejs/kit';
 import image from '$lib/images/davinci_1.png';
 import prisma from '$lib/prisma';
+import { MediaType } from '@prisma/client/edge';
+import { groupBy } from 'lodash-es';
 
 // POST /api/profiles
 export async function POST({ request }) {
@@ -12,16 +14,7 @@ export async function POST({ request }) {
 			userId,
 			bio,
 			gender,
-			avatarUrl: image,
-			collection: {
-				create: {
-					media: {
-						books: [],
-						podcasts: [],
-						videos: []
-					}
-				}
-			}
+			avatarUrl: image
 		}
 	});
 
@@ -31,7 +24,7 @@ export async function POST({ request }) {
 // GET /api/profiles?username={username}
 export async function GET({ url }) {
 	const username = url.searchParams.get('username') ?? undefined;
-	const profile = await prisma.profile.findUnique({
+	const _profile = await prisma.profile.findUnique({
 		where: {
 			username
 		},
@@ -39,6 +32,27 @@ export async function GET({ url }) {
 			collection: true
 		}
 	});
+	
+	let profile = {};
 
+	if (_profile) {
+		const collection = groupBy(_profile.collection, 'mediaType');
+		Object.keys(MediaType).forEach(key => {
+			const lowerKey = key.toLowerCase();
+			if (collection[key]) {
+				if (lowerKey !== key) {
+					collection[lowerKey + 's'] = collection[key];
+					delete collection[key];
+				}
+			} else {
+				collection[lowerKey + 's'] = [];
+			}
+		});
+		profile = {
+			..._profile,
+			collection
+		}
+	}
+	
 	return json(profile);
 }
