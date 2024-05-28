@@ -32,12 +32,12 @@ export async function GET({ url }) {
 			collection: true
 		}
 	});
-	
+
 	let profile = {};
 
 	if (_profile) {
 		const collection = groupBy(_profile.collection, 'mediaType');
-		Object.keys(MediaType).forEach(key => {
+		Object.keys(MediaType).forEach((key) => {
 			const lowerKey = key.toLowerCase();
 			if (collection[key]) {
 				if (lowerKey !== key) {
@@ -51,8 +51,8 @@ export async function GET({ url }) {
 		profile = {
 			..._profile,
 			collection
-		}
+		};
 	}
-	
+
 	return json(profile);
 }

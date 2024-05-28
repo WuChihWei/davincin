@@ -20,10 +20,10 @@ model MediaItem {
   title        String
   mediaType    MediaType
   subjectTag   String?
-  description  String?
+  description  String?    @default("")
   originalUrl  String
   thumbnailUrl String?
-  voteCount    Int        @default(0)
+  voteCount    Int?       @default(0)
 }
 
 model Profile {
