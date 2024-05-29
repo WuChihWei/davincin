@@ -4,6 +4,7 @@
 	import image from '$lib/images/davinci_1.png';
 	import Icon from '@iconify/svelte';
 	import { page } from '$app/stores';
+	import { MediaType } from '@prisma/client';
 
 	let activeTab = 0;
 	const tabs = [{ title: 'Media' }, { title: 'Tab 2' }, { title: 'Tab 3' }];
@@ -61,7 +62,7 @@
 						<ListItem title={book.title} voteCount={book.voteCount} url={book.originalUrl}
 						></ListItem>
 					{/each}
-					<ItemInput></ItemInput>
+					<ItemInput mediaType={MediaType.BOOK}></ItemInput>
 				</div>
 			</div>
 
@@ -72,7 +73,7 @@
 						<ListItem title={podcast.title} voteCount={podcast.voteCount} url={podcast.originalUrl}
 						></ListItem>
 					{/each}
-					<ItemInput></ItemInput>
+					<ItemInput mediaType={MediaType.PODCAST}></ItemInput>
 				</div>
 			</div>
 
@@ -83,7 +84,7 @@
 						<ListItem title={video.title} voteCount={video.voteCount} url={video.originalUrl}
 						></ListItem>
 					{/each}
-					<ItemInput></ItemInput>
+					<ItemInput mediaType={MediaType.VIDEO}></ItemInput>
 				</div>
 			</div>
 		</div>

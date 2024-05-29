@@ -12,7 +12,7 @@ export async function POST({ request }) {
 			username,
 			userId,
 			bio,
-			gender,
+			gender
 		}
 	});
 
