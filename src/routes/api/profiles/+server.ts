@@ -1,5 +1,4 @@
 import { json } from '@sveltejs/kit';
-import image from '$lib/images/davinci_1.png';
 import prisma from '$lib/prisma';
 import { MediaType } from '@prisma/client/edge';
 import { groupBy } from 'lodash-es';
@@ -13,8 +12,7 @@ export async function POST({ request }) {
 			username,
 			userId,
 			bio,
-			gender,
-			avatarUrl: image
+			gender
 		}
 	});
 
@@ -32,12 +30,12 @@ export async function GET({ url }) {
 			collection: true
 		}
 	});
-	
+
 	let profile = {};
 
 	if (_profile) {
 		const collection = groupBy(_profile.collection, 'mediaType');
-		Object.keys(MediaType).forEach(key => {
+		Object.keys(MediaType).forEach((key) => {
 			const lowerKey = key.toLowerCase();
 			if (collection[key]) {
 				if (lowerKey !== key) {
@@ -51,8 +49,8 @@ export async function GET({ url }) {
 		profile = {
 			..._profile,
 			collection
-		}
+		};
 	}
-	
+
 	return json(profile);
 }

@@ -4,6 +4,7 @@
 	import image from '$lib/images/davinci_1.png';
 	import Icon from '@iconify/svelte';
 	import { page } from '$app/stores';
+	import { MediaType } from '@prisma/client';
 
 	let activeTab = 0;
 	const tabs = [{ title: 'Media' }, { title: 'Tab 2' }, { title: 'Tab 3' }];
@@ -17,7 +18,7 @@
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-<div class="text-column">
+<div class="text-column w-3/5">
 	{#if data.profile}
 		<div class="mt-10 flex flex-row">
 			<img class="rounded-full h-36" src={data.profile.avatarUrl || image} alt="" />
@@ -58,10 +59,14 @@
 				<h4 class="mb-4 text-2xl font-bold">📖 Books</h4>
 				<div class="px-1 rounded-md shadow-sm">
 					{#each data.profile.collection.books as book}
-						<ListItem title={book.title} voteCount={book.voteCount} url={book.originalUrl}
+						<ListItem
+							id={book.id}
+							title={book.title}
+							voteCount={book.voteCount}
+							url={book.originalUrl}
 						></ListItem>
 					{/each}
-					<ItemInput></ItemInput>
+					<ItemInput mediaType={MediaType.BOOK}></ItemInput>
 				</div>
 			</div>
 
@@ -69,10 +74,14 @@
 				<h4 class="mb-4 text-2xl font-bold">📻 Podcasts</h4>
 				<div class="px-1 rounded-md shadow-sm">
 					{#each data.profile.collection.podcasts as podcast}
-						<ListItem title={podcast.title} voteCount={podcast.voteCount} url={podcast.originalUrl}
+						<ListItem
+							id={podcast.id}
+							title={podcast.title}
+							voteCount={podcast.voteCount}
+							url={podcast.originalUrl}
 						></ListItem>
 					{/each}
-					<ItemInput></ItemInput>
+					<ItemInput mediaType={MediaType.PODCAST}></ItemInput>
 				</div>
 			</div>
 
@@ -80,10 +89,14 @@
 				<h4 class="mb-4 text-2xl font-bold">📹 Videos</h4>
 				<div class="px-1 rounded-md shadow-sm">
 					{#each data.profile.collection.videos as video}
-						<ListItem title={video.title} voteCount={video.voteCount} url={video.originalUrl}
+						<ListItem
+							id={video.id}
+							title={video.title}
+							voteCount={video.voteCount}
+							url={video.originalUrl}
 						></ListItem>
 					{/each}
-					<ItemInput></ItemInput>
+					<ItemInput mediaType={MediaType.VIDEO}></ItemInput>
 				</div>
 			</div>
 		</div>

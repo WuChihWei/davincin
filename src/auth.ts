@@ -44,6 +44,14 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
 		Google,
 		Facebook
 	],
+	callbacks: {
+		session({ session }) {
+			return { 
+				expires: session.expires,
+				user: session.user
+			};
+		}
+	},
 	pages: {
 		signIn: '/login'
 	},

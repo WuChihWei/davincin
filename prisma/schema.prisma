@@ -14,16 +14,36 @@ datasource db {
 }
 
 model MediaItem {
-  id           String     @id @default(auto()) @map("_id") @db.ObjectId
-  profile      Profile    @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  profileId    String     @db.ObjectId
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  profile      Profile       @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId    String        @db.ObjectId
   title        String
   mediaType    MediaType
   subjectTag   String?
-  description  String?
+  description  String?       @default("")
   originalUrl  String
   thumbnailUrl String?
-  voteCount    Int        @default(0)
+  voteCount    Int?          @default(0)
+  votes        Vote[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([profileId, originalUrl])
+}
+
+model Vote {
+  id     String    @id @default(auto()) @map("_id") @db.ObjectId
+  type   VoteType
+  user   User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String    @db.ObjectId
+  item   MediaItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId String    @db.ObjectId
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([itemId, userId])
 }
 
 model Profile {
@@ -43,16 +63,17 @@ model Profile {
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  username      String    @unique @default(cuid())
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  username      String        @unique @default(cuid())
   profiles      Profile[]
-  role          Role      @default(USER)
+  role          Role          @default(USER)
   name          String?
-  email         String?   @unique
+  email         String?       @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  votes         Vote[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -115,4 +136,9 @@ enum MediaType {
   BOOK
   PODCAST
   VIDEO
+}
+
+enum VoteType {
+  UP
+  DOWN
 }

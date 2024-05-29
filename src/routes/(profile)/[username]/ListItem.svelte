@@ -1,5 +1,10 @@
 <script>
+	import { enhance } from '$app/forms';
 	import Icon from '@iconify/svelte';
+	/**
+	 * @type {string}
+	 */
+	export let id;
 	/**
 	 * @type {string}
 	 */
@@ -22,18 +27,23 @@
 
 	<a href={url} class="text-lg font-semibold ml-4 mr-auto">{title}</a>
 
-	<div class="flex items-center space-x-2">
-		<div class="items-center rounded-full bg-gray-200 px-5 py-1 text-md font-semibold">
-			{voteCount}
+	<form method="POST" use:enhance>
+		<div class="flex items-center space-x-2">
+			<div class="items-center rounded-full bg-gray-200 ml-6 px-5 py-1 text-md font-semibold">
+				{voteCount}
+			</div>
+			<input type="hidden" name="itemId" value={id} />
+			<button formaction="?/up" class="p-1 rounded-full border border-gray-200 hover:bg-gray-200">
+				👍
+			</button>
+			<button formaction="?/down" class="p-1 rounded-full border border-gray-200 hover:bg-gray-200">
+				👎
+			</button>
+			<button formaction="?/save" class="p-1 rounded-full border border-gray-200 hover:bg-gray-200">
+				<Icon icon="ri:add-line" class="text-gray-300" style="font-size: 24px;" />
+			</button>
 		</div>
-		<button class="p-1 rounded-full border border-gray-200 hover:bg-gray-200"> 👍 </button>
-
-		<button class="p-1 rounded-full border border-gray-200 hover:bg-gray-200"> 👎 </button>
-
-		<button class="p-1 rounded-full border border-gray-200 hover:bg-gray-200">
-			<Icon icon="ri:add-line" class="text-gray-300" style="font-size: 24px;" />
-		</button>
-	</div>
+	</form>
 </div>
 
 <style>
