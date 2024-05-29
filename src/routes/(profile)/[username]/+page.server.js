@@ -19,11 +19,14 @@ export const load = async ({ fetch, params }) => {
 
 /** @satisfies {import('./$types').Actions} */
 export const actions = {
-	add: async ({ request, fetch }) => {
+	add: async ({ request, fetch, locals }) => {
 		const data = await request.formData();
 		const item = String(data.get('item'));
 		const mediaType = String(data.get('mediaType'));
 		const profileId = String(data.get('profileId'));
+		const session = await locals.auth();
+
+		if (!session) throw redirect(303, '/login');
 
 		// Syntax validation
 		try {
@@ -82,13 +85,12 @@ export const actions = {
 		const session = await locals.auth();
 
 		if (!session) throw redirect(303, '/login');
-		// console.log(session)
 		try {
 			await fetch(`api/items/${itemId}`, {
 				method: 'PUT',
 				body: JSON.stringify({
 					vote: VoteType.UP,
-					userId: session.userId
+					userId: session.user.id
 				})
 			});
 		} catch (error) {
@@ -108,7 +110,7 @@ export const actions = {
 				method: 'PUT',
 				body: JSON.stringify({
 					vote: VoteType.DOWN,
-					userId: session.userId
+					userId: session.user.id
 				})
 			});
 		} catch (error) {
@@ -118,6 +120,9 @@ export const actions = {
 		}
 	},
 	save: async ({ request, fetch, locals }) => {
+		const session = await locals.auth();
+
+		if (!session) throw redirect(303, '/login');
 		// TODO
 	},
 };
