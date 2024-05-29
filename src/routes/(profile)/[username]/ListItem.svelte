@@ -1,4 +1,5 @@
 <script>
+	import { enhance } from '$app/forms';
 	import Icon from '@iconify/svelte';
 	/**
 	 * @type {string}
@@ -26,7 +27,7 @@
 
 	<a href={url} class="text-lg font-semibold ml-4 mr-auto">{title}</a>
 
-	<form method="POST">
+	<form method="POST" use:enhance>
 		<div class="flex items-center space-x-2">
 			<div class="items-center rounded-full bg-gray-200 ml-6 px-5 py-1 text-md font-semibold">
 				{voteCount}

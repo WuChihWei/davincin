@@ -1,4 +1,5 @@
 <script>
+	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
@@ -20,7 +21,7 @@
 	<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5">
 		<Icon icon="ri:add-line" class="text-gray-700" style="font-size: 24px;" />
 	</div>
-	<form method="POST" action="?/add">
+	<form method="POST" action="?/add" use:enhance>
 		<input type="hidden" name="profileId" value={$page.data.profile.id} />
 		<input type="hidden" name="mediaType" value={mediaType} />
 		<input
