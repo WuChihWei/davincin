@@ -1,4 +1,3 @@
-import { URL_META_API_KEY } from '$env/static/private';
 import { VoteType } from '@prisma/client';
 import { fail, redirect } from '@sveltejs/kit';
 
@@ -46,13 +45,7 @@ export const actions = {
 				method: 'HEAD'
 			});
 			if (response.ok) {
-				const options = {
-					headers: {
-						authorization: `Basic ${URL_META_API_KEY}`
-					}
-				};
-
-				response = await fetch(`https://api.urlmeta.org/meta?url=${item}`, options);
+				response = await fetch(`https://api.dub.co/metatags?url=${item}`);
 				response = await response.json();
 				console.log(response);
 
@@ -63,11 +56,11 @@ export const actions = {
 					},
 					body: JSON.stringify({
 						profileId,
-						title: response.meta.title,
-						description: response.meta.description,
+						title: response.title,
+						description: response.description,
 						mediaType,
-						originalUrl: item
-						// TODO: thumbnailUrl: ''
+						originalUrl: item,
+						thumbnailUrl: response.image,
 					})
 				});
 			}
