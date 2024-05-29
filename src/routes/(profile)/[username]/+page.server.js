@@ -20,7 +20,7 @@ export const load = async ({ fetch, params }) => {
 export const actions = {
 	add: async ({ request, fetch, locals }) => {
 		const data = await request.formData();
-		const item = String(data.get('item'));
+		const item = String(data.get('item')).replace(/\/$/, "");;
 		const mediaType = String(data.get('mediaType'));
 		const profileId = String(data.get('profileId'));
 		const session = await locals.auth();
