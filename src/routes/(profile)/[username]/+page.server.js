@@ -1,4 +1,5 @@
 import { URL_META_API_KEY } from '$env/static/private';
+import { VoteType } from '@prisma/client';
 import { fail, redirect } from '@sveltejs/kit';
 
 /** @satisfies {import('./$types').PageServerLoad} */
@@ -74,5 +75,49 @@ export const actions = {
 				error: error.message
 			});
 		}
-	}
+	},
+	up: async ({ request, fetch, locals }) => {
+		const data = await request.formData();
+		const itemId = String(data.get('itemId'));
+		const session = await locals.auth();
+
+		if (!session) throw redirect(303, '/login');
+		// console.log(session)
+		try {
+			await fetch(`api/items/${itemId}`, {
+				method: 'PUT',
+				body: JSON.stringify({
+					vote: VoteType.UP,
+					userId: session.userId
+				})
+			});
+		} catch (error) {
+			return fail(422, {
+				error: error.message
+			});
+		}
+	},
+	down: async ({ request, fetch, locals }) => {
+		const data = await request.formData();
+		const itemId = String(data.get('itemId'));
+		const session = await locals.auth();
+
+		if (!session) throw redirect(303, '/login');
+		try {
+			await fetch(`api/items/${itemId}`, {
+				method: 'PUT',
+				body: JSON.stringify({
+					vote: VoteType.DOWN,
+					userId: session.userId
+				})
+			});
+		} catch (error) {
+			return fail(422, {
+				error: error.message
+			});
+		}
+	},
+	save: async ({ request, fetch, locals }) => {
+		// TODO
+	},
 };

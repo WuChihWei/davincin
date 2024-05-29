@@ -59,7 +59,11 @@
 				<h4 class="mb-4 text-2xl font-bold">📖 Books</h4>
 				<div class="px-1 rounded-md shadow-sm">
 					{#each data.profile.collection.books as book}
-						<ListItem title={book.title} voteCount={book.voteCount} url={book.originalUrl}
+						<ListItem
+							id={book.id}
+							title={book.title}
+							voteCount={book.voteCount}
+							url={book.originalUrl}
 						></ListItem>
 					{/each}
 					<ItemInput mediaType={MediaType.BOOK}></ItemInput>
@@ -70,7 +74,11 @@
 				<h4 class="mb-4 text-2xl font-bold">📻 Podcasts</h4>
 				<div class="px-1 rounded-md shadow-sm">
 					{#each data.profile.collection.podcasts as podcast}
-						<ListItem title={podcast.title} voteCount={podcast.voteCount} url={podcast.originalUrl}
+						<ListItem
+							id={podcast.id}
+							title={podcast.title}
+							voteCount={podcast.voteCount}
+							url={podcast.originalUrl}
 						></ListItem>
 					{/each}
 					<ItemInput mediaType={MediaType.PODCAST}></ItemInput>
@@ -81,7 +89,11 @@
 				<h4 class="mb-4 text-2xl font-bold">📹 Videos</h4>
 				<div class="px-1 rounded-md shadow-sm">
 					{#each data.profile.collection.videos as video}
-						<ListItem title={video.title} voteCount={video.voteCount} url={video.originalUrl}
+						<ListItem
+							id={video.id}
+							title={video.title}
+							voteCount={video.voteCount}
+							url={video.originalUrl}
 						></ListItem>
 					{/each}
 					<ItemInput mediaType={MediaType.VIDEO}></ItemInput>
