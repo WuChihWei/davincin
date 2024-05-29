@@ -21,13 +21,15 @@ model MediaItem {
   mediaType    MediaType
   subjectTag   String?
   description  String?       @default("")
-  originalUrl  String        @unique
+  originalUrl  String
   thumbnailUrl String?
   voteCount    Int?          @default(0)
   votes        Vote[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([profileId, originalUrl])
 }
 
 model Vote {
@@ -40,6 +42,8 @@ model Vote {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([itemId, userId])
 }
 
 model Profile {
