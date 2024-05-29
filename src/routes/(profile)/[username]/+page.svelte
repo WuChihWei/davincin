@@ -18,7 +18,7 @@
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-<div class="text-column">
+<div class="text-column w-3/5">
 	{#if data.profile}
 		<div class="mt-10 flex flex-row">
 			<img class="rounded-full h-36" src={data.profile.avatarUrl || image} alt="" />

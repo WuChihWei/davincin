@@ -23,7 +23,7 @@
 	<a href={url} class="text-lg font-semibold ml-4 mr-auto">{title}</a>
 
 	<div class="flex items-center space-x-2">
-		<div class="items-center rounded-full bg-gray-200 px-5 py-1 text-md font-semibold">
+		<div class="items-center rounded-full bg-gray-200 ml-6 px-5 py-1 text-md font-semibold">
 			{voteCount}
 		</div>
 		<button class="p-1 rounded-full border border-gray-200 hover:bg-gray-200"> 👍 </button>
